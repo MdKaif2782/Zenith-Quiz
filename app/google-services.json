@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "669328938373",
+    "project_id": "zenith-quiz-app",
+    "storage_bucket": "zenith-quiz-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669328938373:android:3828b114ca6bb1398a60ec",
+        "android_client_info": {
+          "package_name": "inc.typhon.zenithquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669328938373-iisuu617nlcun7jmg1qeo9fvpnv8avaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMl0vDkXFkjvc6PGIcVroDPZQdXgMv5d4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669328938373-iisuu617nlcun7jmg1qeo9fvpnv8avaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
