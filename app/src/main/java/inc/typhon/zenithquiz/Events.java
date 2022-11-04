@@ -40,7 +40,6 @@ public class Events extends AppCompatActivity {
         listView.setAdapter(adapter);
         getEvents();
         refresh();
-
     }
 
     public void getEvents(){
