@@ -7,6 +7,16 @@
     android:background="@drawable/rectangal_radial_gradient"
     tools:context=".Sign_up">
 
+
+    <ImageView
+        android:layout_width="276dp"
+        android:layout_height="157dp"
+        android:layout_marginStart="-180dp"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/hexagon_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
