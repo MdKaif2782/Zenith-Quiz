@@ -5,17 +5,128 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212"
+    app:layout_constraintVertical_weight="3"
     tools:context=".home_page">
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="-150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/guy_on_laptop"
-        app:lottie_repeatMode="reverse"/>
+        app:lottie_repeatMode="reverse" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:weightSum="200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/blog_button"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/blog"
+                android:fontFamily="@font/acme"
+                android:paddingTop="10dp"
+                android:text="Blog"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/websites_button"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/website"
+                android:fontFamily="@font/acme"
+                android:paddingTop="10dp"
+                android:text="Website"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/message_button"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/message"
+                android:fontFamily="@font/acme"
+                android:paddingTop="10dp"
+                android:text="Message"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/quiz_button"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/quiz"
+                android:fontFamily="@font/acme"
+                android:paddingTop="10dp"
+                android:text="Quiz Test"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/olympiad_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="60dp"
+        android:background="@drawable/button_background"
+        android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+        android:fontFamily="@font/acme"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:text="Live Olympiad"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#121212"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
