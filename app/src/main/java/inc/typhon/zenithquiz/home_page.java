@@ -59,10 +59,8 @@ public class home_page extends AppCompatActivity {
                 .load(R.drawable.user_image)
                 .circleCrop()
                 .into(user_image);
-        DocumentReference documentReference = firebaseFirestore
-                .collection("users")
-                .document(Objects.requireNonNull(firebaseAuth.getCurrentUser())
-                        .getUid());
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        DocumentReference documentReference = firebaseFirestore.collection("users").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
         documentReference.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot documentSnapshot = task.getResult();

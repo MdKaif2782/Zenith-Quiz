@@ -74,11 +74,15 @@ public class Sign_up extends AppCompatActivity {
                             firebaseFirestore
                                     .collection("users")
                                             .document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
-                                            .set(accountHolder);
-
-                            Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(context, home_page.class);
-                            startActivity(intent);
+                                            .set(accountHolder).addOnCompleteListener(task1 -> {
+                                                if (task1.isSuccessful()){
+                                                    Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(context,home_page.class));
+                                                    finish();
+                                                }else {
+                                                    Toast.makeText(context, "Error: " + task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
                         }else {
                             Toast.makeText(context, "Account already exists with this email", Toast.LENGTH_SHORT).show();
                         }
