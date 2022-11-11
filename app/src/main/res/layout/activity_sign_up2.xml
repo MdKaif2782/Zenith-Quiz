@@ -39,6 +39,7 @@
         android:layout_marginHorizontal="40dp"
         android:background="@drawable/text_input_white"
         android:hint="Name"
+        android:textSize="15sp"
         android:inputType="textPersonName"
         android:paddingStart="10dp"
         android:textColorHint="#565957"
@@ -51,6 +52,7 @@
         android:layout_height="45dp"
         android:id="@+id/sign_up_email_input"
         android:layout_marginHorizontal="40dp"
+        android:textSize="15sp"
         android:background="@drawable/text_input_white"
         android:hint="E-mail Address"
         android:inputType="textEmailAddress"
@@ -67,6 +69,7 @@
         android:layout_marginHorizontal="40dp"
         android:background="@drawable/text_input_white"
         android:hint="Password"
+        android:textSize="15sp"
         android:inputType="textPassword"
         android:paddingStart="10dp"
         android:textColorHint="#565957"
@@ -77,6 +80,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:textSize="15sp"
         android:id="@+id/sign_up_confirm_password_input"
         android:layout_marginHorizontal="40dp"
         android:background="@drawable/text_input_white"
@@ -124,9 +128,9 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/text_input_white"
-        android:gravity="center"
         android:orientation="horizontal"
         android:padding="5dp"
+        android:gravity="fill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_confirm_password_input">
@@ -138,7 +142,8 @@
             android:padding="5dp"
             android:text="Male"
             android:textColor="#4A4949"
-            android:textSize="18dp"
+            android:textSize="15dp"
+            android:gravity="left|center_vertical"
             android:textStyle="italic" />
 
         <RadioButton
@@ -148,7 +153,7 @@
             android:padding="5dp"
             android:text="Female"
             android:textColor="#4A4949"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:textStyle="italic" />
     </RadioGroup>
 
