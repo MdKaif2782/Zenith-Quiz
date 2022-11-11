@@ -1,7 +1,7 @@
 package inc.typhon.zenithquiz.Particapnt_info;
 
 public class AccountHolder {
-    private String name,email,password,gender,phone,age,institute;
+    private String name,email,password,gender,phone,age,institute, avatar;
     private Boolean isSenior;
     private Boolean isMale;
 
@@ -49,6 +49,14 @@ public class AccountHolder {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getGender() {

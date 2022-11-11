@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -26,6 +27,7 @@ public class Sign_up extends AppCompatActivity {
     private AccountHolder accountHolder;
     private FirebaseAuth firebaseAuth;
     private SharedPreferences sharedPreferences;
+    private FirebaseFirestore firebaseFirestore;
 
 
     @Override
@@ -33,6 +35,7 @@ public class Sign_up extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up2);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         accountHolder = new AccountHolder();
         sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
         context = this;
@@ -68,10 +71,11 @@ public class Sign_up extends AppCompatActivity {
                             editor.putString("password",accountHolder.getPassword());
                             editor.putBoolean("isMale",accountHolder.getMale());
                             editor.apply();
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(accountHolder.getName())
-                                    .build();
-                            Objects.requireNonNull(task.getResult().getUser()).updateProfile(profileUpdates);
+                            firebaseFirestore
+                                    .collection("users")
+                                            .document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
+                                            .set(accountHolder);
+
                             Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(context, home_page.class);
                             startActivity(intent);
