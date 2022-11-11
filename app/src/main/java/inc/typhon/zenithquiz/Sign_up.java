@@ -44,11 +44,13 @@ public class Sign_up extends AppCompatActivity {
 
     public void onSignUpFinal(View view){
         if ((male.isChecked() || female.isChecked()) &&
-            name.getText().toString().length() > 0 &&
-            email.getText().toString().length() > 0 &&
-            password.getText().toString().length() > 0 &&
-            confirmPassword.getText().toString().length() > 0 &&
-            password.getText().toString().equals(confirmPassword.getText().toString())
+            name.getText().toString().length() > 5 &&
+            email.getText().toString().length() > 5 &&
+            password.getText().toString().length() > 5 &&
+            confirmPassword.getText().toString().length() > 5 &&
+            password.getText().toString().equals(confirmPassword.getText().toString()) &&
+            password.getText().toString().length() > 5 &&
+            email.getText().toString().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
         ) {
             accountHolder.setName(name.getText().toString());
             accountHolder.setEmail(email.getText().toString());
@@ -87,6 +89,18 @@ public class Sign_up extends AppCompatActivity {
             }
             if (!password.getText().toString().equals(confirmPassword.getText().toString())){
                 Toast.makeText(context, "Password and Confirm Password must be same", Toast.LENGTH_SHORT).show();
+            }
+            if (!email.getText().toString().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")){
+                Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show();
+            }
+            if (password.getText().toString().length() < 6){
+                Toast.makeText(context, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+            }
+            if (name.getText().toString().length() < 6){
+                Toast.makeText(context, "Name must be at least 6 characters", Toast.LENGTH_SHORT).show();
+            }
+            if (email.getText().toString().length() < 6){
+                Toast.makeText(context, "Email is too short", Toast.LENGTH_SHORT).show();
             }
         }
     }
