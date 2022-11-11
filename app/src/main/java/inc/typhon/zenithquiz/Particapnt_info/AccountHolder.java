@@ -3,6 +3,7 @@ package inc.typhon.zenithquiz.Particapnt_info;
 public class AccountHolder {
     private String name,email,password,gender,phone,age,institute;
     private Boolean isSenior;
+    private Boolean isMale;
 
     public AccountHolder(String name, String email, String password, String gender, String phone, String age, String institute, Boolean isSenior) {
         this.name = name;
@@ -13,6 +14,14 @@ public class AccountHolder {
         this.age = age;
         this.institute = institute;
         this.isSenior = isSenior;
+    }
+
+    public Boolean getMale() {
+        return isMale;
+    }
+
+    public void setMale(Boolean male) {
+        isMale = male;
     }
 
     public AccountHolder() {
