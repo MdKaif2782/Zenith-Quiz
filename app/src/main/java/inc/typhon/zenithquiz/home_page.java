@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class home_page extends AppCompatActivity {
     LottieAnimationView lottieAnimationView;
@@ -21,6 +24,7 @@ public class home_page extends AppCompatActivity {
    int SCREEN_HEIGHT, SCREEN_WIDTH;
    TextView user_name;
    SharedPreferences sharedPreferences;
+   FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +56,8 @@ public class home_page extends AppCompatActivity {
                 .load(R.drawable.user_image)
                 .circleCrop()
                 .into(user_image);
-
-        user_name.setText(sharedPreferences.getString("name",""));
+        String name = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getDisplayName();
+        user_name.setText(name);
 
 
 

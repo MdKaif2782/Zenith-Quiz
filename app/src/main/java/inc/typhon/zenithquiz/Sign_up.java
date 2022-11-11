@@ -13,6 +13,9 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserProfileChangeRequest;
+
+import java.util.Objects;
 
 import inc.typhon.zenithquiz.Particapnt_info.AccountHolder;
 
@@ -65,6 +68,10 @@ public class Sign_up extends AppCompatActivity {
                             editor.putString("password",accountHolder.getPassword());
                             editor.putBoolean("isMale",accountHolder.getMale());
                             editor.apply();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(accountHolder.getName())
+                                    .build();
+                            Objects.requireNonNull(task.getResult().getUser()).updateProfile(profileUpdates);
                             Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(context, home_page.class);
                             startActivity(intent);
