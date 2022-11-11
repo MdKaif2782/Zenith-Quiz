@@ -102,6 +102,9 @@ public class Sign_up extends AppCompatActivity {
             if (email.getText().toString().length() < 6){
                 Toast.makeText(context, "Email is too short", Toast.LENGTH_SHORT).show();
             }
+            if (!male.isChecked() || !female.isChecked()){
+                Toast.makeText(context,"Choose a gender",Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
