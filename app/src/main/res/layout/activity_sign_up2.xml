@@ -98,6 +98,7 @@
         android:fontFamily="@font/acme"
         android:text="Sign Up"
         android:textSize="19sp"
+        android:onClick="onSignUpFinal"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
