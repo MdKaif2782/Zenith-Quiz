@@ -111,39 +111,30 @@ public class Sign_up extends AppCompatActivity {
         } else {
             if (name.getText().toString().length() == 0){
                 name.setError("Name is required");
-                Toast.makeText(context, "Name is required", Toast.LENGTH_SHORT).show();
             }
             if (email.getText().toString().length() == 0){
                 email.setError("Email is required");
-                Toast.makeText(context, "Email is required", Toast.LENGTH_SHORT).show();
             }
             if (password.getText().toString().length() == 0){
                 password.setError("Password is required");
-                Toast.makeText(context, "Password is required", Toast.LENGTH_SHORT).show();
             }
             if (confirmPassword.getText().toString().length() == 0){
                 confirmPassword.setError("Confirm Password is required");
-                Toast.makeText(context, "Confirm Password is required", Toast.LENGTH_SHORT).show();
             }
             if (!password.getText().toString().equals(confirmPassword.getText().toString())){
                 confirmPassword.setError("Password does not match");
-                Toast.makeText(context, "Password and Confirm Password must be same", Toast.LENGTH_SHORT).show();
             }
             if (!email.getText().toString().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")){
                 email.setError("Invalid Email");
-                Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show();
             }
             if (password.getText().toString().length() < 6){
                 password.setError("Password must be at least 6 characters");
-                Toast.makeText(context, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
             }
             if (name.getText().toString().length() < 6){
                 name.setError("Name must be at least 6 characters");
-                Toast.makeText(context, "Name must be at least 6 characters", Toast.LENGTH_SHORT).show();
             }
             if (email.getText().toString().length() < 6){
                 email.setError("Email must be at least 6 characters");
-                Toast.makeText(context, "Email is too short", Toast.LENGTH_SHORT).show();
             }
             if (!male.isChecked() || !female.isChecked()){
                 Toast.makeText(context,"Choose a gender",Toast.LENGTH_SHORT).show();
