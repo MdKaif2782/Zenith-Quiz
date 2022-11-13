@@ -1,7 +1,7 @@
 package inc.typhon.zenithquiz.Particapnt_info;
 
 public class AccountHolder {
-    private String name,email,password,gender,phone,age,institute, avatar;
+    private String name,email,password,gender,phone,age,institute, avatar,avatar_delete_url;
     private Boolean isSenior;
     private Boolean isMale;
 
@@ -14,6 +14,14 @@ public class AccountHolder {
         this.age = age;
         this.institute = institute;
         this.isSenior = isSenior;
+    }
+
+    public String getAvatar_delete_url() {
+        return avatar_delete_url;
+    }
+
+    public void setAvatar_delete_url(String avatar_delete_url) {
+        this.avatar_delete_url = avatar_delete_url;
     }
 
     public Boolean getMale() {

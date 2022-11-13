@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,8 +22,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.File;
-import java.net.URI;
+import java.io.ByteArrayOutputStream;
+
+
+import java.io.IOException;
 import java.util.Objects;
 
 import inc.typhon.zenithquiz.API.OkhttpImgBB;
@@ -89,8 +95,24 @@ public class home_page extends AppCompatActivity {
                     .circleCrop()
                     .into(user_image);
             OkhttpImgBB okhttpImgBB = new OkhttpImgBB();
-            File file = new File(URI.create(selectedImage.toString()));
-            okhttpImgBB.uploadImage(file, firebaseAuth.getCurrentUser().getUid());
+            //convert to base64
+
+            Uri uri = data.getData();
+            Bitmap bitmap= null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ByteArrayOutputStream stream=new ByteArrayOutputStream();
+            assert bitmap != null;
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+            byte[] bytes=stream.toByteArray();
+            String encodedImage= Base64.encodeToString(bytes,Base64.DEFAULT);
+            System.out.println("\n\n\n\n\n"+encodedImage+"\n\n\n\n\n");
+            okhttpImgBB.uploadImage(encodedImage, Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
+
+
         }
     }
 }

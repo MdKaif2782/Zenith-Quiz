@@ -27,11 +27,11 @@ public class OkhttpImgBB {
     //make a multipart request
     //get the response
     //return the response
-    public void uploadImage(File file_uri,String user_id) {
+    public void uploadImage(String base64,String user_id) {
         OkHttpClient client = new OkHttpClient();
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("image", file_uri.getName(), RequestBody.create(file_uri, MediaType.parse("image/*")))
+                .addFormDataPart("image", base64)
                 .build();
         okhttp3.Request request = new okhttp3.Request.Builder()
                 .url(API_URL)
