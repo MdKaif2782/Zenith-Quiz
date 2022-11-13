@@ -89,8 +89,8 @@ public class home_page extends AppCompatActivity {
                     .circleCrop()
                     .into(user_image);
             OkhttpImgBB okhttpImgBB = new OkhttpImgBB();
-            URI uri = URI.create(selectedImage.toString());
-            okhttpImgBB.uploadImage(uri, firebaseAuth.getCurrentUser().getUid());
+            File file = new File(URI.create(selectedImage.toString()));
+            okhttpImgBB.uploadImage(file, firebaseAuth.getCurrentUser().getUid());
         }
     }
 }
