@@ -146,14 +146,13 @@ public class home_page extends AppCompatActivity {
                 public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
                     if (response.isSuccessful()) {
                         String myResponse = response.body().string();
-                        System.out.println("\n\n\n\n\n"+myResponse+"\n\n\n\n\n");
+
                         try {
                             JSONObject json = new JSONObject(myResponse);
                             JSONObject data = json.getJSONObject("data");
                             String url = data.getString("url");
                             String delete_url = data.getString("delete_url");
-                            System.out.println("\n\n\n\n\n"+url+"\n\n\n\n\n");
-                            System.out.println("\n\n\n\n\n"+delete_url+"\n\n\n\n\n");
+
                             DocumentReference documentReference = firebaseFirestore.collection("users").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
                             documentReference.update("avatar",url);
                             documentReference.update("delete_url",delete_url);
