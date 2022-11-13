@@ -31,8 +31,6 @@ import java.io.ByteArrayOutputStream;
 
 import java.io.IOException;
 import java.util.Objects;
-
-import inc.typhon.zenithquiz.API.OkhttpImgBB;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -111,7 +109,7 @@ public class home_page extends AppCompatActivity {
                     .load(selectedImage)
                     .circleCrop()
                     .into(user_image);
-            OkhttpImgBB okhttpImgBB = new OkhttpImgBB();
+
             //convert to base64
 
             Uri uri = data.getData();
