@@ -85,6 +85,7 @@ public class Sign_up extends AppCompatActivity {
                                             });
                         }else {
                             Toast.makeText(context, "Account already exists with this email", Toast.LENGTH_SHORT).show();
+                            System.out.println(task.getException().getMessage());
                         }
                     });
 

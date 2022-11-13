@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +29,20 @@ public class Sign_in extends AppCompatActivity {
        firebaseAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnCompleteListener(task -> {
            if (task.isSuccessful()){
                startActivity(new Intent(context,home_page.class));
+               finish();
            }
        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //exit app
+        finishAffinity();
+    }
+    public void uploadImage(){
+        AsyncTask.execute(() -> {
+            
+        });
     }
 }
