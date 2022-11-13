@@ -34,7 +34,7 @@ public class OkhttpImgBB {
                 .addFormDataPart("image", base64)
                 .build();
         okhttp3.Request request = new okhttp3.Request.Builder()
-                .url(API_URL)
+                .url(API_URL+API_KEY)
                 .post(requestBody)
                 .build();
         try {
