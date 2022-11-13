@@ -26,5 +26,6 @@ public class Enter extends AppCompatActivity {
     public void onEnter(View view) {
         Intent intent = new Intent(context, Login_Activity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
     }
 }

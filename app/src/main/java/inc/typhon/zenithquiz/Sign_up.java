@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,6 +29,7 @@ public class Sign_up extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private SharedPreferences sharedPreferences;
     private FirebaseFirestore firebaseFirestore;
+    private LottieAnimationView lottieAnimationView;
 
 
     @Override
@@ -45,6 +47,13 @@ public class Sign_up extends AppCompatActivity {
         name = findViewById(R.id.name_input_sign_up);
         male = findViewById(R.id.male_radio_button);
         female = findViewById(R.id.female_radio_button);
+        lottieAnimationView = findViewById(R.id.lottieAnimationView);
+        email.setOnFocusChangeListener(this::onFocus);
+        password.setOnFocusChangeListener(this::onFocus);
+        confirmPassword.setOnFocusChangeListener(this::onFocus);
+        name.setOnFocusChangeListener(this::onFocus);
+
+
     }
 
 
@@ -58,6 +67,10 @@ public class Sign_up extends AppCompatActivity {
             password.getText().toString().length() > 5 &&
             email.getText().toString().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
         ) {
+            view.setVisibility(View.INVISIBLE);
+            lottieAnimationView.setVisibility(View.VISIBLE);
+            lottieAnimationView.setAnimation(R.raw.loading_anim_v2);
+            lottieAnimationView.playAnimation();
             accountHolder.setName(name.getText().toString());
             accountHolder.setEmail(email.getText().toString());
             accountHolder.setPassword(password.getText().toString());
@@ -78,12 +91,17 @@ public class Sign_up extends AppCompatActivity {
                                                 if (task1.isSuccessful()){
                                                     Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(context,home_page.class));
+                                                    overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
                                                     finish();
                                                 }else {
+                                                    lottieAnimationView.setVisibility(View.INVISIBLE);
+                                                    view.setVisibility(View.VISIBLE);
                                                     Toast.makeText(context, "Error: " + task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                         }else {
+                            lottieAnimationView.setVisibility(View.INVISIBLE);
+                            view.setVisibility(View.VISIBLE);
                             Toast.makeText(context, "Account already exists with this email", Toast.LENGTH_SHORT).show();
                             System.out.println(task.getException().getMessage());
                         }
@@ -92,30 +110,39 @@ public class Sign_up extends AppCompatActivity {
 
         } else {
             if (name.getText().toString().length() == 0){
+                name.setError("Name is required");
                 Toast.makeText(context, "Name is required", Toast.LENGTH_SHORT).show();
             }
             if (email.getText().toString().length() == 0){
+                email.setError("Email is required");
                 Toast.makeText(context, "Email is required", Toast.LENGTH_SHORT).show();
             }
             if (password.getText().toString().length() == 0){
+                password.setError("Password is required");
                 Toast.makeText(context, "Password is required", Toast.LENGTH_SHORT).show();
             }
             if (confirmPassword.getText().toString().length() == 0){
+                confirmPassword.setError("Confirm Password is required");
                 Toast.makeText(context, "Confirm Password is required", Toast.LENGTH_SHORT).show();
             }
             if (!password.getText().toString().equals(confirmPassword.getText().toString())){
+                confirmPassword.setError("Password does not match");
                 Toast.makeText(context, "Password and Confirm Password must be same", Toast.LENGTH_SHORT).show();
             }
             if (!email.getText().toString().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")){
+                email.setError("Invalid Email");
                 Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show();
             }
             if (password.getText().toString().length() < 6){
+                password.setError("Password must be at least 6 characters");
                 Toast.makeText(context, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
             }
             if (name.getText().toString().length() < 6){
+                name.setError("Name must be at least 6 characters");
                 Toast.makeText(context, "Name must be at least 6 characters", Toast.LENGTH_SHORT).show();
             }
             if (email.getText().toString().length() < 6){
+                email.setError("Email must be at least 6 characters");
                 Toast.makeText(context, "Email is too short", Toast.LENGTH_SHORT).show();
             }
             if (!male.isChecked() || !female.isChecked()){
@@ -123,4 +150,13 @@ public class Sign_up extends AppCompatActivity {
             }
         }
     }
+
+    public void onFocus(View view,boolean hasFocus){
+        if (hasFocus){
+            view.setBackground(getDrawable(R.drawable.text_input_white_outlined));
+        }else {
+            view.setBackground(getDrawable(R.drawable.text_input_white));
+        }
+    }
+
 }
