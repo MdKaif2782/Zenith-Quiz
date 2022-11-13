@@ -74,10 +74,7 @@ public class home_page extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
         firebaseAuth = FirebaseAuth.getInstance();
         //use glide to set image from url circularly
-        Glide.with(this)
-                .load(R.drawable.user_image)
-                .circleCrop()
-                .into(user_image);
+
         firebaseFirestore = FirebaseFirestore.getInstance();
         DocumentReference documentReference = firebaseFirestore.collection("users").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
         documentReference.get().addOnCompleteListener(task -> {
@@ -85,6 +82,18 @@ public class home_page extends AppCompatActivity {
                 DocumentSnapshot documentSnapshot = task.getResult();
                 if (documentSnapshot.exists()) {
                     user_name.setText(documentSnapshot.getString("name"));
+                    String image_url = documentSnapshot.getString("avatar");
+                    if (image_url != null) {
+                        Glide.with(this)
+                                .load(image_url)
+                                .circleCrop()
+                                .into(user_image);
+                    }else {
+                        Glide.with(this)
+                                .load(R.drawable.user_image)
+                                .circleCrop()
+                                .into(user_image);
+                    }
                 }
             }
         });
