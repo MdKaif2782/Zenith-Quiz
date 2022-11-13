@@ -139,9 +139,10 @@
             android:id="@+id/male_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
             android:text="Male"
             android:textColor="#4A4949"
+            android:paddingHorizontal="10dp"
+            android:layout_marginRight="20dp"
             android:textSize="15dp"
             android:gravity="left|center_vertical"
             android:textStyle="italic" />
@@ -152,6 +153,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Female"
+            android:paddingHorizontal="10dp"
             android:textColor="#4A4949"
             android:textSize="15dp"
             android:textStyle="italic" />
