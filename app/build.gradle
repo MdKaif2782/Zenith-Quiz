@@ -46,8 +46,8 @@ dependencies {
     implementation 'com.airbnb.android:lottie:4.2.0'
     //glide
     implementation 'com.github.bumptech.glide:glide:4.13.2'
-    implementation 'org.apache.httpcomponents:httpcore:4.4.13'
-    implementation 'org.apache.httpcomponents:httpmime:4.5.6'
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
 
 
 }
