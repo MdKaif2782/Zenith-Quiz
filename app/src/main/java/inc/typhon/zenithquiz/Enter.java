@@ -26,6 +26,5 @@ public class Enter extends AppCompatActivity {
     public void onEnter(View view) {
         Intent intent = new Intent(context, Login_Activity.class);
         startActivity(intent);
-
     }
 }

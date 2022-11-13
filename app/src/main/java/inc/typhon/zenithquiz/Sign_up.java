@@ -69,7 +69,7 @@ public class Sign_up extends AppCompatActivity {
         ) {
             view.setVisibility(View.INVISIBLE);
             lottieAnimationView.setVisibility(View.VISIBLE);
-            lottieAnimationView.setAnimation(R.raw.loading_anim_v2);
+            lottieAnimationView.setAnimation(R.raw.luding);
             lottieAnimationView.playAnimation();
             accountHolder.setName(name.getText().toString());
             accountHolder.setEmail(email.getText().toString());
@@ -152,6 +152,7 @@ public class Sign_up extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
+        //exit all activities
+        finishAffinity();
     }
 }
