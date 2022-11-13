@@ -91,7 +91,6 @@ public class Sign_up extends AppCompatActivity {
                                                 if (task1.isSuccessful()){
                                                     Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(context,home_page.class));
-                                                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                                                     finish();
                                                 }else {
                                                     lottieAnimationView.setVisibility(View.INVISIBLE);
@@ -154,6 +153,5 @@ public class Sign_up extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

@@ -29,7 +29,6 @@ public class Sign_in extends AppCompatActivity {
        firebaseAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnCompleteListener(task -> {
            if (task.isSuccessful()){
                startActivity(new Intent(context,home_page.class));
-               overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                finish();
            }
        });
@@ -39,7 +38,7 @@ public class Sign_in extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
     public void uploadImage(){
         AsyncTask.execute(() -> {
