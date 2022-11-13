@@ -110,8 +110,6 @@ public class home_page extends AppCompatActivity {
                     .circleCrop()
                     .into(user_image);
 
-            //convert to base64
-
             Uri uri = data.getData();
             Bitmap bitmap= null;
             try {
@@ -153,7 +151,11 @@ public class home_page extends AppCompatActivity {
                             String url = data.getString("url");
                             String delete_url = data.getString("delete_url");
 
-                            DocumentReference documentReference = firebaseFirestore.collection("users").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
+                            DocumentReference documentReference = firebaseFirestore
+                                    .collection("users")
+                                    .document(Objects.requireNonNull(firebaseAuth
+                                            .getCurrentUser())
+                                            .getUid());
                             documentReference.update("avatar",url);
                             documentReference.update("delete_url",delete_url);
 

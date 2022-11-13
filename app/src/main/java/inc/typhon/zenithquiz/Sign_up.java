@@ -91,7 +91,6 @@ public class Sign_up extends AppCompatActivity {
                                                 if (task1.isSuccessful()){
                                                     Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(context,home_page.class));
-                                                    overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
                                                     finish();
                                                 }else {
                                                     lottieAnimationView.setVisibility(View.INVISIBLE);
