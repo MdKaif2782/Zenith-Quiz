@@ -92,6 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
+            android:id="@+id/textView_quiz_schedule"
             android:text="Schedule: 12 Sept,2022 10:00 AM"
             app:layout_constraintStart_toEndOf="@+id/imageView_quiz"
             app:layout_constraintTop_toBottomOf="@+id/textView_quiz_level" />
@@ -119,6 +120,7 @@
             />
 
         <ImageButton
+            android:id="@+id/imageButton_expand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
