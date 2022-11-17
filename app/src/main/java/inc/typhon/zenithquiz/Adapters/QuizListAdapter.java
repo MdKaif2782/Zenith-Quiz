@@ -67,6 +67,6 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
             quiz_time_remaining.setText("Ended");
         }
 
-        return super.getView(position, convertView, parent);
+        return convertView;
     }
 }
