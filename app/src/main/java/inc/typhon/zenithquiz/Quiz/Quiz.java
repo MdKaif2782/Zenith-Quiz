@@ -7,14 +7,33 @@ public class Quiz {
     private String quizId;
     private boolean isSeniorQuiz;
     private int quizTimePerQuestion;
+    private int quizTotalQuestions;
+    private long quizScheduledTime;
 
-    public Quiz(String quizName, String quizDescription, String quizImage, String quizId, boolean isSeniorQuiz, int quizTimePerQuestion) {
+    public Quiz(String quizName, String quizDescription, String quizImage, boolean isSeniorQuiz, int quizTimePerQuestion, int quizTotalQuestions, long quizSheduledTime) {
         this.quizName = quizName;
         this.quizDescription = quizDescription;
         this.quizImage = quizImage;
-        this.quizId = quizId;
         this.isSeniorQuiz = isSeniorQuiz;
         this.quizTimePerQuestion = quizTimePerQuestion;
+        this.quizTotalQuestions = quizTotalQuestions;
+        this.quizScheduledTime = quizSheduledTime;
+    }
+
+    public int getQuizTotalQuestions() {
+        return quizTotalQuestions;
+    }
+
+    public void setQuizTotalQuestions(int quizTotalQuestions) {
+        this.quizTotalQuestions = quizTotalQuestions;
+    }
+
+    public long getQuizScheduledTime() {
+        return quizScheduledTime;
+    }
+
+    public void setQuizScheduledTime(long quizScheduledTime) {
+        this.quizScheduledTime = quizScheduledTime;
     }
 
     public String getQuizName() {
