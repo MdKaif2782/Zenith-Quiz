@@ -31,6 +31,8 @@ import java.io.ByteArrayOutputStream;
 
 import java.io.IOException;
 import java.util.Objects;
+
+import inc.typhon.zenithquiz.Quiz.Available_quiz;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -169,4 +171,9 @@ public class home_page extends AppCompatActivity {
 
         }
     }
+    public void onQuizClick(android.view.View view) {
+        Intent intent = new Intent(this, Available_quiz.class);
+        startActivity(intent);
+    }
+
 }

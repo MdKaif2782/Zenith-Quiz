@@ -51,7 +51,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_quiz_name" />
 
         <TextView
-            android:id="@+id/textView_quiz_duration"
+            android:id="@+id/textView_quiz_question_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
