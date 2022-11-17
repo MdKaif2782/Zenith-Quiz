@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#121212"
     android:orientation="vertical"
     >
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -45,20 +44,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:fontFamily="sans-serif-medium"
-            android:textSize="15sp"
             android:text="Senior Quiz"
             android:textColor="@color/text_color"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/imageView_quiz"
-            app:layout_constraintTop_toBottomOf="@+id/textView_quiz_name"
-            app:layout_constraintVertical_bias="0.333"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView_quiz_name" />
 
         <TextView
             android:id="@+id/textView_quiz_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:text="50 Q/s"
+            android:text="50 Questions"
             android:textSize="15sp"
             android:textColor="@color/text_color"
             android:layout_marginStart="10dp"
@@ -66,6 +63,69 @@
             app:layout_constraintStart_toEndOf="@+id/textView_quiz_level"
             app:layout_constraintTop_toTopOf="@+id/textView_quiz_level"/>
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="19dp"
+            android:layout_height="21dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_baseline_timer_24"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_duration"
+            app:layout_constraintEnd_toStartOf="@+id/textView_duration"
+            app:layout_constraintTop_toTopOf="@+id/textView_duration" />
 
+        <TextView
+            android:id="@+id/textView_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="7dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="50min"
+            android:textColor="@color/text_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Schedule: 12 Sept,2022 10:00 AM"
+            app:layout_constraintStart_toEndOf="@+id/imageView_quiz"
+            app:layout_constraintTop_toBottomOf="@+id/textView_quiz_level" />
+
+        <TextView
+            android:id="@+id/textView_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11h"
+            android:layout_marginTop="3dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/text_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView_duration"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView_duration" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_timelapse_24"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
