@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.installations.time.Clock;
 
 import java.util.List;
 
@@ -47,13 +48,14 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
         int seconds = duration % 60;
         String time = String.format("%02d:%02d:%02d", hours, minutes, seconds);
         quiz_duration.setText(time);
-        quiz_question_count.setText(String.valueOf(quiz.getQuizTotalQuestions()));
-        level.setText(quiz.isSeniorQuiz() ? "Senior" : "Junior");
+        quiz_question_count.setText(String.valueOf(quiz.getQuizTotalQuestions()+" Question"));
+        level.setText(quiz.isSeniorQuiz() ? "Senior" : "Junior"+" Quiz");
         long epoch = quiz.getQuizScheduledTime();
         //format as 11 Jan 2020 12:00:00
         String date = new java.text.SimpleDateFormat("dd MMM yyyy HH:mm:ss").format(new java.util.Date(epoch * 1000));
         schedule.setText(date);
         long timeRemaining = quiz.getQuizScheduledTime() - System.currentTimeMillis() / 1000;
+
         if (timeRemaining > 0) {
             //formatting the time remaining
             int hoursRemaining = (int) timeRemaining / 3600;
