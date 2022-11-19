@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,54 +21,99 @@ public class Available_quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_quiz);
         List<Quiz> quizList = new ArrayList<>();
-        quizList.add(new Quiz("Physics",
-                "Idk man",
-                "https://e7.pngegg.com/pngimages/481/800/png-clipart-molecular-biology-cell-biology-physics-cover-book-miscellaneous-class.png",
-                false,
-                60,
-                10,
-                1668689611
-                ));
-        quizList.add(new Quiz("Chemistry",
-                "Idk man",
-                "https://e7.pngegg.com/pngimages/481/800/png-clipart-molecular-biology-cell-biology-physics-cover-book-miscellaneous-class.png",
+
+        List<QuizQuestion> quizQuestionList = new ArrayList<>();
+        QuizQuestion quizQuestion = new QuizQuestion(
+                "What is the capital of India?",
+                "New Delhi",
+                "Mumbai",
+                "Chennai",
+                "Kolkata",
+                "New Delhi",
+                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
+                "1",
+                "1",
+                1
+                );
+        quizQuestionList.add(quizQuestion);
+        quizQuestionList.add(new QuizQuestion(
+                "What is the capital of India?",
+                "New Delhi",
+                "Mumbai",
+                "Chennai",
+                "Kolkata",
+                "New Delhi",
+                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
+                "1",
+                "1",
+                1
+        ));
+        quizQuestionList.add(new QuizQuestion(
+                "What is the capital of India?",
+                "New Delhi",
+                "Mumbai",
+                "Chennai",
+                "Kolkata",
+                "New Delhi",
+                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
+                "1",
+                "1",
+                1
+        ));
+        quizQuestionList.add(new QuizQuestion(
+                "What is the capital of India?",
+                "New Delhi",
+                "Mumbai",
+                "Chennai",
+                "Kolkata",
+                "New Delhi",
+                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
+                "1",
+                "1",
+                1
+        ));
+        Quiz test = new Quiz();
+        test.setQuizName("Test");
+        test.setQuizDescription("This is a test");
+        test.setQuizImage("https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b");
+        test.setQuizId("1");
+        test.setSeniorQuiz(true);
+        test.setQuizTimePerQuestion(10);
+        test.setQuizTotalQuestions(10);
+        test.setQuizScheduledTime(1590000000000L);
+        test.setQuizQuestions(quizQuestionList);
+        quizList.add(test);
+        quizList.add(new Quiz(
+                "Test",
+                "This is a test 2",
+                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
+                "1",
                 true,
-                60,
                 10,
-                1668688611
-        ));
-        quizList.add(new Quiz("IT Quiz",
-                "Idk man",
-                "https://e7.pngegg.com/pngimages/481/800/png-clipart-molecular-biology-cell-biology-physics-cover-book-miscellaneous-class.png",
-                false,
-                60,
                 10,
-                1668688611
+                1590000000000L,
+                quizQuestionList
         ));
-        quizList.add(new Quiz("Botany Quiz",
-                "Idk man",
-                "https://e7.pngegg.com/pngimages/481/800/png-clipart-molecular-biology-cell-biology-physics-cover-book-miscellaneous-class.png",
-                false,
-                60,
-                10,
-                1668688611
-        ));
-        quizList.add(new Quiz("I have no idea",
-                "Idk man",
-                "https://e7.pngegg.com/pngimages/481/800/png-clipart-molecular-biology-cell-biology-physics-cover-book-miscellaneous-class.png",
+        quizList.add(new Quiz(
+                "Test",
+                "This is a test 3",
+                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
+                "1",
                 true,
-                60,
-                500,
-                1668688611
+                10,
+                10,
+                1590000000000L,
+                quizQuestionList
         ));
-        quizList.add(new Quiz("Andrew tate",
-                "Idk man",
-                "https://e7.pngegg.com/pngimages/481/800/png-clipart-molecular-biology-cell-biology-physics-cover-book-miscellaneous-class.png",
-                false,
-                60,
-                100,
-                1668688611
-        ));
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        for (Quiz quiz : quizList) {
+            db.collection("quiz").document(quiz.getQuizId()).set(quiz);
+        }
+
+
+
+
         listView = findViewById(R.id.listView_available_quiz);
         QuizListAdapter adapter = new QuizListAdapter(this, R.layout.available_quiz_item, quizList);
         listView.setAdapter(adapter);

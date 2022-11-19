@@ -1,5 +1,7 @@
 package inc.typhon.zenithquiz.Quiz;
 
+import java.util.List;
+
 public class Quiz {
     private String quizName;
     private String quizDescription;
@@ -9,8 +11,9 @@ public class Quiz {
     private int quizTimePerQuestion;
     private int quizTotalQuestions;
     private long quizScheduledTime;
+    private List<QuizQuestion> quizQuestions;
 
-    public Quiz(String quizName, String quizDescription, String quizImage, boolean isSeniorQuiz, int quizTimePerQuestion, int quizTotalQuestions, long quizSheduledTime) {
+    public Quiz(String quizId, String quizName, String quizDescription, String quizImage, boolean isSeniorQuiz, int quizTimePerQuestion, int quizTotalQuestions, long quizSheduledTime, List<QuizQuestion> quizQuestionList) {
         this.quizName = quizName;
         this.quizDescription = quizDescription;
         this.quizImage = quizImage;
@@ -18,6 +21,18 @@ public class Quiz {
         this.quizTimePerQuestion = quizTimePerQuestion;
         this.quizTotalQuestions = quizTotalQuestions;
         this.quizScheduledTime = quizSheduledTime;
+        this.quizId = quizId;
+        this.quizQuestions = quizQuestionList;
+    }
+    public Quiz() {
+    }
+
+    public List<QuizQuestion> getQuizQuestions() {
+        return quizQuestions;
+    }
+
+    public void setQuizQuestions(List<QuizQuestion> quizQuestions) {
+        this.quizQuestions = quizQuestions;
     }
 
     public int getQuizTotalQuestions() {

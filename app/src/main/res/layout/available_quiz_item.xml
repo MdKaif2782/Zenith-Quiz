@@ -14,8 +14,6 @@
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/button_background"
             >
-
-
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="80dp"
                 android:id="@+id/imageView_quiz"
