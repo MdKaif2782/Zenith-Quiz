@@ -51,7 +51,7 @@ public class Available_quiz extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             System.out.println("\n\n\nItem Clicked  :  "+position);
             Intent intent = new Intent(Available_quiz.this, Quiz_exam.class);
-            intent.putExtra("quizPosition", position);
+            intent.putExtra("quizID", quizList.get(position).getQuizId());
             startActivity(intent);
         });
     }

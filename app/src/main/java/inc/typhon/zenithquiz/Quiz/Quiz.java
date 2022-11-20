@@ -12,8 +12,9 @@ public class Quiz {
     private int quizTotalQuestions;
     private long quizScheduledTime;
     private List<QuizQuestion> quizQuestions;
+    private List<Participants> participants;
 
-    public Quiz(String quizId, String quizName, String quizDescription, String quizImage, boolean isSeniorQuiz, int quizTimePerQuestion, int quizTotalQuestions, long quizSheduledTime, List<QuizQuestion> quizQuestionList) {
+    public Quiz(String quizId, String quizName, String quizDescription, String quizImage, boolean isSeniorQuiz, int quizTimePerQuestion, int quizTotalQuestions, long quizSheduledTime, List<QuizQuestion> quizQuestionList, List<Participants> participants) {
         this.quizName = quizName;
         this.quizDescription = quizDescription;
         this.quizImage = quizImage;
@@ -23,6 +24,7 @@ public class Quiz {
         this.quizScheduledTime = quizSheduledTime;
         this.quizId = quizId;
         this.quizQuestions = quizQuestionList;
+        this.participants = participants;
     }
     public Quiz() {
     }
@@ -97,5 +99,16 @@ public class Quiz {
 
     public void setQuizId(String quizId) {
         this.quizId = quizId;
+    }
+
+    public List<Participants> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<Participants> participants) {
+        this.participants = participants;
+    }
+    public void addScore(String UID, int score ){
+        participants.add(new Participants(UID, score));
     }
 }
