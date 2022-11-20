@@ -22,6 +22,10 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
     public QuizListAdapter(@NonNull Context context, int resource, @NonNull List<Quiz> objects) {
         super(context, resource, objects);
     }
+    //set on click listener for each item in the list
+    public interface OnItemClickListener {
+        void onItemClick(Quiz quiz);
+    }
 
     @NonNull
     @Override

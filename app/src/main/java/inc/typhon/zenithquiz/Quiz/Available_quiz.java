@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -45,17 +48,12 @@ public class Available_quiz extends AppCompatActivity {
                 Toast.makeText(Available_quiz.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
         listView.setOnItemClickListener((parent, view, position, id) -> {
+            System.out.println("\n\n\nItem Clicked  :  "+position);
             Intent intent = new Intent(Available_quiz.this, Quiz_exam.class);
             intent.putExtra("quizPosition", position);
             startActivity(intent);
         });
-
-
-
-
-
     }
+
 }

@@ -49,6 +49,8 @@ public class Quiz_exam extends AppCompatActivity {
                 quiz = task.getResult().getDocuments().get(quizPosition).toObject(Quiz.class);
                 assert quiz != null;
                 quizQuestions = quiz.getQuizQuestions();
+            }else {
+                System.out.println("Error: "+task.getException().getMessage());
             }
         });
     }

@@ -50,7 +50,7 @@ dependencies {
     //okhttp
     implementation 'com.squareup.okhttp3:okhttp:4.9.2'
     //Rounded horizontal progress bar
-    implementation 'com.sasank.roundedhorizontalprogress:roundedhorizontalprogress:1.0.1'
+
 
 
 
