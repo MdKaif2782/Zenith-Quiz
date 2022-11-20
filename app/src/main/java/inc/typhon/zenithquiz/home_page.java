@@ -97,6 +97,8 @@ public class home_page extends AppCompatActivity {
                 }
             }
         });
+
+
     }
     public void onUserImageClick(android.view.View view) {
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

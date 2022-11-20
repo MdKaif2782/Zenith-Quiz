@@ -16,6 +16,13 @@
         android:theme="@style/Theme.ZenithQuiz"
         tools:targetApi="31">
         <activity
+            android:name=".Quiz_exam"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Available_quiz"
             android:exported="false">
             <meta-data
@@ -70,7 +77,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"

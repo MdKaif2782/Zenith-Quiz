@@ -2,8 +2,10 @@ package inc.typhon.zenithquiz.Quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -15,108 +17,45 @@ import inc.typhon.zenithquiz.R;
 
 public class Available_quiz extends AppCompatActivity {
     private ListView listView;
+    private QuizListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_quiz);
-        List<Quiz> quizList = new ArrayList<>();
+        listView = findViewById(R.id.listView_available_quiz);
 
-        List<QuizQuestion> quizQuestionList = new ArrayList<>();
-        QuizQuestion quizQuestion = new QuizQuestion(
-                "What is the capital of India?",
-                "New Delhi",
-                "Mumbai",
-                "Chennai",
-                "Kolkata",
-                "New Delhi",
-                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
-                "1",
-                "1",
-                1
-                );
-        quizQuestionList.add(quizQuestion);
-        quizQuestionList.add(new QuizQuestion(
-                "What is the capital of India?",
-                "New Delhi",
-                "Mumbai",
-                "Chennai",
-                "Kolkata",
-                "New Delhi",
-                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
-                "1",
-                "1",
-                1
-        ));
-        quizQuestionList.add(new QuizQuestion(
-                "What is the capital of India?",
-                "New Delhi",
-                "Mumbai",
-                "Chennai",
-                "Kolkata",
-                "New Delhi",
-                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
-                "1",
-                "1",
-                1
-        ));
-        quizQuestionList.add(new QuizQuestion(
-                "What is the capital of India?",
-                "New Delhi",
-                "Mumbai",
-                "Chennai",
-                "Kolkata",
-                "New Delhi",
-                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
-                "1",
-                "1",
-                1
-        ));
-        Quiz test = new Quiz();
-        test.setQuizName("Test");
-        test.setQuizDescription("This is a test");
-        test.setQuizImage("https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b");
-        test.setQuizId("1");
-        test.setSeniorQuiz(true);
-        test.setQuizTimePerQuestion(10);
-        test.setQuizTotalQuestions(10);
-        test.setQuizScheduledTime(1590000000000L);
-        test.setQuizQuestions(quizQuestionList);
-        quizList.add(test);
-        quizList.add(new Quiz(
-                "Test",
-                "This is a test 2",
-                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
-                "1",
-                true,
-                10,
-                10,
-                1590000000000L,
-                quizQuestionList
-        ));
-        quizList.add(new Quiz(
-                "Test",
-                "This is a test 3",
-                "https://firebasestorage.googleapis.com/v0/b/zenith-quiz.appspot.com/o/quiz%2Fquiz1.jpg?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b",
-                "1",
-                true,
-                10,
-                10,
-                1590000000000L,
-                quizQuestionList
-        ));
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        for (Quiz quiz : quizList) {
-            db.collection("quiz").document(quiz.getQuizId()).set(quiz);
-        }
+        List<Quiz> quizList = new ArrayList<>();
+        db.collection("quiz").get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (int i = 0; i < task.getResult().size(); i++) {
+                    Quiz quiz = task.getResult().getDocuments().get(i).toObject(Quiz.class);
+                    quizList.add(quiz);
+                    System.out.println(quiz.getQuizName()+" \nIs Added");
+                    QuizQuestion quizQuestion = quiz.getQuizQuestions().get(0);
+                    System.out.println(quizQuestion.getQuestion());
+                }
+               adapter = new QuizListAdapter(this, R.layout.available_quiz_item, quizList);
+                listView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            } else {
+                Toast.makeText(Available_quiz.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent(Available_quiz.this, Quiz_exam.class);
+            intent.putExtra("quizPosition", position);
+            startActivity(intent);
+        });
 
 
 
 
-        listView = findViewById(R.id.listView_available_quiz);
-        QuizListAdapter adapter = new QuizListAdapter(this, R.layout.available_quiz_item, quizList);
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
     }
 }
